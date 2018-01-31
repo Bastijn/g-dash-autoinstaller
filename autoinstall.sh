@@ -126,6 +126,31 @@ sleep 5
 echo "Restarting Gulden"
 source $guldendir/guldenstart.sh
 
+echo "Create GuldenD check script and give it execution rights"
+cat > $guldendir/guldendchecker.sh << EOF
+#!/bin/sh
+# set -x
+# Shell script to monitor GuldenD running on the G-DASH node
+# If the number of GuldenD processes is <= 0
+# it will start GuldenD.
+# -------------------------------------------------------------------------
+# set alert level 0 is default
+ALERT=0
+#
+#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#
+usep=$(ps aux | grep GuldenD | wc -l | awk '{print $1-1}')
+echo $usep
+if [ $usep -le $ALERT ] ; then
+   $guldenddir/guldenstart.sh
+fi
+EOF
+
+sudo chmod a+rwx $guldendir/guldendchecker.sh
+
+echo "Creating crontab entry to check if GuldenD is running every 5 minutes, else restart GuldenD"
+crontab -l | { cat; echo "*/5 * * * * sleep 120 ; $guldendir/guldendchecker.sh >/dev/null 2>&1"; } | crontab -
+
 echo ""
 echo "-------------------------------------------------------------"
 echo "Finished!"
