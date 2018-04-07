@@ -5,9 +5,9 @@ guldenddir="/opt/gulden/gulden"
 guldendatadir="/opt/gulden/datadir"
 guldenconf="/opt/gulden/datadir/Gulden.conf"
 gdashdir="/var/www/html"
-gdashdownload="https://g-dash.nl/download/G-DASH-0.26.tar.gz"
-gdashtar="G-DASH-0.26.tar.gz"
-gdashversion="0.26"
+gdashdownload="https://g-dash.nl/download/G-DASH-0.27.tar.gz"
+gdashtar="G-DASH-0.27.tar.gz"
+gdashversion="0.27"
 gdashostname=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 gdashostname=${gdashostname//[[:blank:]]/}
 
@@ -39,7 +39,7 @@ rpcpasswordgen=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 
 echo "Create a Gulden.conf with default values"
 cat > $guldenconf << EOF
-maxconnections=50
+maxconnections=60
 rpcuser=pi
 rpcpassword=$rpcpasswordgen
 EOF
