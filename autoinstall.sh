@@ -5,9 +5,9 @@ guldenddir="/opt/gulden/gulden"
 guldendatadir="/opt/gulden/datadir"
 guldenconf="/opt/gulden/datadir/Gulden.conf"
 gdashdir="/var/www/html"
-gdashdownload="https://g-dash.nl/download/G-DASH-0.28.tar.gz"
-gdashtar="G-DASH-0.28.tar.gz"
-gdashversion="0.28"
+gdashdownload="https://g-dash.nl/download/G-DASH-0.29.tar.gz"
+gdashtar="G-DASH-0.29.tar.gz"
+gdashversion="0.29"
 gdashostname=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 gdashostname=${gdashostname//[[:blank:]]/}
 
