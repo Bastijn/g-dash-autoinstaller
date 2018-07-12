@@ -139,10 +139,10 @@ ALERT=0
 #
 #::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 #
-usep=$(ps aux | grep GuldenD | wc -l | awk '{print $1-1}')
-echo $usep
-if [ $usep -le $ALERT ] ; then
-   $guldenddir/guldenstart.sh
+usep=\$(ps aux | grep GuldenD | wc -l | awk '{print \$1-1}')
+echo \$usep
+if [ \$usep -le \$ALERT ] ; then
+   $guldendir/guldenstart.sh
 fi
 EOF
 
