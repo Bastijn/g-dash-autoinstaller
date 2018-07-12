@@ -62,19 +62,18 @@ cat > $guldendir/guldenstart.sh << EOF
 #!/bin/bash
 echo "Stopping GuldenD service"
 $guldenddir/Gulden-cli -datadir=$guldendatadir stop
-sleep 5
 
-echo "Killing GuldenD"
+echo "Fetching update headers"
+sudo apt-get update
+
+echo "Killing GuldenD if still running"
 killall -9 GuldenD
-sleep 5
+
+echo "Checking for Gulden update"
+sudo apt-get -y --allow-unauthenticated install gulden
 
 echo "Removing peers.dat"
 rm $guldendatadir/peers.dat
-sleep 5
-
-echo "Checking for Gulden update"
-sudo apt-get update
-sudo apt-get -y --allow-unauthenticated install gulden
 sleep 5
 
 echo "Starting GuldenD"
