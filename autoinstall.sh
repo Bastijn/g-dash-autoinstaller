@@ -5,9 +5,9 @@ guldenddir="/opt/gulden/gulden"
 guldendatadir="/opt/gulden/datadir"
 guldenconf="/opt/gulden/datadir/Gulden.conf"
 gdashdir="/var/www/html"
-gdashdownload="https://g-dash.nl/download/G-DASH-1.01.tar.gz"
-gdashtar="G-DASH-1.01.tar.gz"
-gdashversion="1.01"
+gdashdownload="https://g-dash.nl/download/G-DASH-1.02.tar.gz"
+gdashtar="G-DASH-1.02.tar.gz"
+gdashversion="1.02"
 gdashostname=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 gdashostname=${gdashostname//[[:blank:]]/}
 
@@ -132,11 +132,11 @@ cat > $guldendir/guldendchecker.sh << EOF
 # Shell script to monitor GuldenD running on the G-DASH node
 # If the number of GuldenD processes is <= 0
 # it will start GuldenD.
-# -------------------------------------------------------------------------
+# ---------------------------------------------
 # set alert level 0 is default
 ALERT=0
 #
-#::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+#::::::::::::::::::::::::::::::::::::::
 #
 usep=\$(ps aux | grep GuldenD | wc -l | awk '{print \$1-1}')
 echo \$usep
