@@ -39,7 +39,11 @@ rpcpasswordgen=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 12 | head -n 1)
 
 echo "Create a Gulden.conf with default values"
 cat > $guldenconf << EOF
-maxconnections=60
+maxconnections=30
+maxmempool=20
+dbcache=20
+maxsigcachesize=4
+rpcthreads=1
 rpcuser=pi
 rpcpassword=$rpcpasswordgen
 EOF
