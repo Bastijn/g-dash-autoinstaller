@@ -5,14 +5,14 @@ guldenddir="/opt/gulden/gulden"
 guldendatadir="/opt/gulden/datadir"
 guldenconf="/opt/gulden/datadir/Gulden.conf"
 gdashdir="/var/www/html"
-gdashdownload="https://g-dash.nl/download/G-DASH-1.04.tar.gz"
-gdashtar="G-DASH-1.04.tar.gz"
-gdashversion="1.04"
+gdashdownload="https://g-dash.nl/download/G-DASH-1.1.tar.gz"
+gdashtar="G-DASH-1.1.tar.gz"
+gdashversion="1.1"
 gdashostname=$(ip route get 8.8.8.8 | awk '{print $NF; exit}')
 gdashostname=${gdashostname//[[:blank:]]/}
 
 echo "Adding Gulden repository to the Raspbian sources"
-sudo sh -c 'echo "deb http://raspbian.gulden.com/repo/ stretch main" > /etc/apt/sources.list.d/gulden.list'
+sudo sh -c 'echo "deb [trusted=yes] http://raspbian.gulden.com/repo/ stretch main" > /etc/apt/sources.list.d/gulden.list'
 
 echo "Updating the system"
 sudo apt-get update && sudo apt-get -y upgrade
